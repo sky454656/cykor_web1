@@ -1,9 +1,14 @@
 <?php
     session_start(); 
-    
+
     $conn = mysqli_connect("db", 'root', 'root', 'boarddb');
     if (!$conn) {
     die("DB 연결 실패: " . mysqli_connect_error());
+    }
+
+    if(!isset($_SESSION['username'])) {
+        header("Location: login.php");
+        exit;
     }
 
     $sql = "SELECT * FROM list";

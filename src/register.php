@@ -5,10 +5,11 @@
     die("DB 연결 실패: " . mysqli_connect_error());
     }
 
+    if(isset($_SESSION['username'])) {
+        header("Location: index.php");
+        exit;
+    }
     
-    $sql = "SELECT * FROM users";
-    $result = mysqli_query($conn, $sql);
-
 ?>
 
 
@@ -28,14 +29,5 @@
             <input type="password" name="password" placeholder="Password"  autocomplete="off">
             <input type="submit">
             </P>
-        <?php while ($row = mysqli_fetch_assoc($result)): ?>
-                <tr>
-                    <td><?= $row['id'] ?></td>
-                    <td><?= htmlspecialchars($row['username']) ?></td>
-                    <td><?= htmlspecialchars($row['password']) ?></td>
-                    <td><?= $row['created_at'] ?></td>
-                </tr>
-            <?php endwhile; ?>
-
     </body>
 </html>

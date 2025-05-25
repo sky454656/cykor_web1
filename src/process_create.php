@@ -5,6 +5,11 @@
     die("DB 연결 실패: " . mysqli_connect_error());
     }
 
+    if(!isset($_SESSION['username'])) {
+        header("Location: login.php");
+        exit;
+    }
+
     $filtered = array(
         'title'=>mysqli_real_escape_string($conn, $_POST['title']),
         'content'=>mysqli_real_escape_string($conn, $_POST['content'])

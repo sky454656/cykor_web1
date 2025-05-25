@@ -15,7 +15,7 @@
         You are logged in as {$_SESSION['username']}
         ";
     }
-    else{
+    else {
         header("Location: login.php");
         exit;
     }
@@ -30,7 +30,5 @@
     </head>
     <body>
         <?=$current_user?>
-
-
     </body>
 </html>
