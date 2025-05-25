@@ -31,7 +31,7 @@
         $info['author'] = $row['author'];
         $info['created_at'] = $row['created_at'];
 
-        $update_link = '<a href="update.php?id='.$_GET['id'].'">edit</a>';
+     
     };
 
 ?>

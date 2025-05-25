@@ -20,7 +20,7 @@
                 id = '{$filtered['id']}'
     ";
     $result = mysqli_query($conn, $sql);
-    header("Location: index.php");
+    header("Location: list.php");
     exit;
 ?>
 

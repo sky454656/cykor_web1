@@ -4,7 +4,7 @@
     die("DB 연결 실패: " . mysqli_connect_error());
     }
 
-    $sql = "SELECT * FROM list";
+    $sql = "SELECT * FROM list ORDER BY id ASC";
     $result = mysqli_query($conn, $sql);
 
     $list="";
@@ -30,12 +30,10 @@
         $info['content'] = $row['content'];
         $info['author'] = $row['author'];
         $info['created_at'] = $row['created_at'];
-
-        $update_link = '<a href="update.php?id='.$_GET['id'].'">edit</a>';
-        $delete_link = '<a href="delete.php?id='.$_GET['id'].'">delete</a>';
     };
 
 ?>
+
 
 
 <!doctype html>
@@ -48,21 +46,13 @@
         <a href="index.php">home</a>
         <a href="create.php">create</a>
         <a href="list.php">list</a>
-        <ol>
-            <h1>list</h1>
-            <?=$list?>
-        </ol>
-
-
-        <?php if(isset($_GET['id'])): ?>
-            <h2><?=$info['title']?></h2>
-            <p>By <?=$info['author']?></p>
-            <p><?=$info['content']?></P>
-            <p>Created at: <?=$info['created_at']?></p>
-            <br>
-            <?=$update_link?>
-            <?=$delete_link?>
-        <?php endif; ?>
-        
+        <h1>delete</h1>
+        <p>Are you sure you want to delete this post?</p>
+        <p>Title : <?=$info['title']?></p>
+        <p>Content : <?=$info['content']?></p>
+        <form action="process_delete.php" method="POST">
+            <input type="hidden" name="id" value="<?=$_GET['id']?>">    
+            <p><input type="submit" value="delete"></p>
+        </form>
     </body>
 </html>
