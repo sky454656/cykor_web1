@@ -1,10 +1,24 @@
 <?php
+    session_start(); 
     $conn = mysqli_connect("db", 'root', 'root', 'boarddb');
     if (!$conn) {
     die("DB 연결 실패: " . mysqli_connect_error());
-    }
+    }   
 
-  
+    if(isset($_SESSION['username'])){
+        $current_user = "
+        <a href=\"index.php\">home</a>
+        <a href=\"create.php\">create</a>
+        <a href=\"list.php\">list</a>
+        <a href=\"logout.php\">logout</a>
+        <h1>home</h1>
+        You are logged in as {$_SESSION['username']}
+        ";
+    }
+    else{
+        header("Location: login.php");
+        exit;
+    }
 ?>
 
 
@@ -15,12 +29,7 @@
         <title>cykor</title>
     </head>
     <body>
-        <a href="index.php">home</a>
-        <a href="create.php">create</a>
-        <a href="list.php">list</a>
-        <br><br><br>
-        <p1>home</p1>
-
+        <?=$current_user?>
 
 
     </body>
