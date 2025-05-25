@@ -36,9 +36,10 @@
         $info['content'] = $row['content'];
         $info['author'] = $row['author'];
         $info['created_at'] = $row['created_at'];
-
-     
     };
+
+    if($_SESSION['username'] != $info['author'])
+        echo "<script>alert('edit 권한이 없습니다!'); history.back();</script>";
 
 ?>
 
@@ -59,8 +60,8 @@
             <input type="hidden" name="id" value="<?=$_GET['id']?>">
             <p><input type="text" name="title" placeholder="title"
             value="<?=$info['title']?>"></p>
-            <p><textarea name="content" placeholder="content"><?=$info['content']?></textarea>
-        </p>
+            <p><textarea name="content" placeholder="content"><?=$info['content']?></textarea></p>
+            <input type="hidden" name="author" value="<?=$info['author']?>">
             <p><input type="submit"></p>
         </form>
     </body>

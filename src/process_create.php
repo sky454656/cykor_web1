@@ -12,7 +12,8 @@
 
     $filtered = array(
         'title'=>mysqli_real_escape_string($conn, $_POST['title']),
-        'content'=>mysqli_real_escape_string($conn, $_POST['content'])
+        'content'=>mysqli_real_escape_string($conn, $_POST['content']),
+        'author'=>mysqli_real_escape_string($conn, $_SESSION['username'])
     );
 
 
@@ -22,7 +23,7 @@
             VALUES(
                 '{$filtered['title']}',
                 '{$filtered['content']}',
-                'tmp'
+                '{$filtered['author']}'
             )
     ";
 

@@ -38,6 +38,9 @@
         $info['created_at'] = $row['created_at'];
     };
 
+    if($_SESSION['username'] != $info['author'])
+        echo "<script>alert('delete 권한이 없습니다!'); history.back();</script>";
+
 ?>
 
 

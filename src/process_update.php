@@ -13,7 +13,8 @@
     $filtered = array(
         'id' => mysqli_real_escape_string($conn, $_POST['id']),
         'title'=>mysqli_real_escape_string($conn, $_POST['title']),
-        'content'=>mysqli_real_escape_string($conn, $_POST['content'])
+        'content'=>mysqli_real_escape_string($conn, $_POST['content']),
+        'author'=>mysqli_real_escape_string($conn, $_POST['author'])
     );
 
 
