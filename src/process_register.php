@@ -15,6 +15,13 @@
         'password'=> password_hash($_POST['password'], PASSWORD_DEFAULT)
     );
 
+    $sql = "SELECT * FROM users WHERE username = '{$filtered['username']}'";
+    $result = mysqli_query($conn, $sql);
+
+    if (mysqli_num_rows($result) > 0) {
+        echo "<script>alert('이미 존재하는 아이디입니다.'); history.back();</script>";
+        exit;
+    }
 
     $sql = "
         INSERT INTO users

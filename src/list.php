@@ -55,6 +55,7 @@
         <a href="index.php">home</a>
         <a href="create.php">create</a>
         <a href="list.php">list</a>
+        <a href="logout.php">logout</a>
         <ol>
             <h1>list</h1>
             <?=$list?>

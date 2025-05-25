@@ -21,6 +21,8 @@
     <body>
         <a href="index.php">home</a>
         <a href="create.php">create</a>
+        <a href="list.php">list</a>
+        <a href="logout.php">logout</a>
         <form action = "process_create.php" method="POST">
             <p><input type="text" name="title" placeholder="title"></p>
             <p><textarea name="content" placeholder="content"></textarea></p>
