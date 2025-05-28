@@ -6,13 +6,14 @@
     }   
 
     if(isset($_SESSION['username'])){
+        $filtered = htmlspecialchars($_SESSION['username']);
         $current_user = "
         <a href=\"index.php\">home</a>
         <a href=\"create.php\">create</a>
         <a href=\"list.php\">list</a>
         <a href=\"logout.php\">logout</a>
         <h1>home</h1>
-        You are logged in as {$_SESSION['username']}
+        You are logged in as {$filtered}
         ";
     }
     else {

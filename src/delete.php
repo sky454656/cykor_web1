@@ -55,10 +55,11 @@
         <a href="index.php">home</a>
         <a href="create.php">create</a>
         <a href="list.php">list</a>
+        <a href="logout.php">logout</a>
         <h1>delete</h1>
         <p>Are you sure you want to delete this post?</p>
-        <p>Title : <?=$info['title']?></p>
-        <p>Content : <?=$info['content']?></p>
+        <p>Title : <?=htmlspecialchars($info['title'])?></p>
+        <p>Content : <?=htmlspecialchars($info['content'])?></p>
         <form action="process_delete.php" method="POST">
             <input type="hidden" name="id" value="<?=$_GET['id']?>">    
             <p><input type="submit" value="delete"></p>

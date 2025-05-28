@@ -16,7 +16,7 @@
 
     $list="";
     while($row = mysqli_fetch_array($result)) {
-        $title = $row['title'];
+        $title = htmlspecialchars($row['title']);
         $list = $list. "<li>
         <a href= \"list.php?id={$row['id']}\">{$title}</a>
         </li>";
@@ -33,14 +33,21 @@
         $sql = "SELECT * FROM list WHERE id={$_GET['id']}";
         $result = mysqli_query($conn, $sql);
         $row = mysqli_fetch_array($result);
-        $info['title'] = $row['title'];
-        $info['content'] = $row['content'];
-        $info['author'] = $row['author'];
-        $info['created_at'] = $row['created_at'];
 
-        $update_link = '<a href="update.php?id='.$_GET['id'].'">edit</a>';
-        $delete_link = '<a href="delete.php?id='.$_GET['id'].'">delete</a>';
-    };
+        if($row) {
+            $info['title'] = $row['title'];
+            $info['content'] = $row['content'];
+            $info['author'] = $row['author'];
+            $info['created_at'] = $row['created_at'];
+        
+            $update_link = '<a href="update.php?id='.$_GET['id'].'">edit</a>';
+            $delete_link = '<a href="delete.php?id='.$_GET['id'].'">delete</a>';
+        
+        }else {
+            echo "<script>alert('존재하지 않는 게시글입니다.'); history.back();</script>";
+            exit;
+        }
+    }
 
 ?>
 
@@ -63,9 +70,9 @@
 
 
         <?php if(isset($_GET['id'])): ?>
-            <h2><?=$info['title']?></h2>
-            <p>By <?=$info['author']?></p>
-            <p><?=$info['content']?></P>
+            <h2><?=htmlspecialchars($info['title'])?></h2>
+            <p>By <?=htmlspecialchars($info['author'])?></p>
+            <p><?=htmlspecialchars($info['content'])?></P>
             <p>Created at: <?=$info['created_at']?></p>
             <br>
             <?=$update_link?>

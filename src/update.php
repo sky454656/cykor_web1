@@ -55,6 +55,7 @@
         <a href="index.php">home</a>
         <a href="create.php">create</a>
         <a href="list.php">list</a>
+        <a href="logout.php">logout</a>
         <h1>edit</h1>
         <form action="process_update.php" method="POST">
             <input type="hidden" name="id" value="<?=$_GET['id']?>">
